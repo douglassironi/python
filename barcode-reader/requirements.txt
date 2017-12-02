@@ -1,0 +1,4 @@
+PIL
+daemon
+zbar
+logging
