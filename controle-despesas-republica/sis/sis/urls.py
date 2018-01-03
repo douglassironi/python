@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
+from financeiro.views import resumo
 
 if settings.DEV:
     urlpatterns = [
         url(r'^admin/', admin.site.urls),
+        url(r'^$', resumo, name='resumo'),
     ]
 else:
     urlpatterns = [

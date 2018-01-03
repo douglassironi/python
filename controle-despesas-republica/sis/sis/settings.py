@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'daterange_filter',
     'financeiro',
-    'daterange_filter'
 
 ]
 

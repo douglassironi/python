@@ -1,5 +1,5 @@
 from PIL import Image
-import zbarlight
+# import zbarlight
 import requests
 from bs4 import BeautifulSoup
 
@@ -12,7 +12,7 @@ def decodeQR(arquivo):
         print image_file
         image = Image.open(image_file)
         image.load()
-        codes = zbarlight.scan_codes('qrcode', image)
+        # codes = zbarlight.scan_codes('qrcode', image)
         print codes
     return codes
 

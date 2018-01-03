@@ -77,7 +77,6 @@ class Rateios(models.Model):
     def __unicode__(self):
         return self.usuario.username + " "+ self.despesa.descricao+" "+ str(self.perc)+"%"
 
-
 class Extrato(models.Model):
     data = models.DateField(default=datetime.today)
     despesa = models.ForeignKey(Despesas)
