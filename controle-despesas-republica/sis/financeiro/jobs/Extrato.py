@@ -22,10 +22,10 @@ class Job(BaseJob):
         for usr in us:
             credito = 0
             for c in co.filter(usuario=usr.id):
-                credito += c.valorUnitario+c.quantidade
+                credito += c.valorUnitario*c.quantidade
             if round(credito) > 0:
                 ds = Despesas.objects.get(descricao="COMPRAS")
-                ds.valor = reduce(operator.add,[c.valorUnitario+c.quantidade for c in co ])
+                ds.valor = reduce(operator.add,[c.valorUnitario*c.quantidade for c in co ])
                 ds.save()
                 addExtrato(ds,-round(credito,2),usr)
 
