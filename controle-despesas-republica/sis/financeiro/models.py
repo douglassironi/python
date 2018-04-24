@@ -65,6 +65,46 @@ class Despesas(models.Model):
     def __unicode__(self):
         return self.descricao
 
+
+    
+    
+class Checklist(models.Model):
+    atividade  =   models.CharField(blank=False, max_length=100)
+    fundamental =  models.BooleanField(default=False)
+    valor       =  models.DecimalField(max_digits=6, decimal_places=2,default=0)
+    class Meta:
+        verbose_name = 'Checklist'
+        verbose_name_plural = 'Checklist'
+
+    def __unicode__(self):
+        return self.atividade
+    
+    
+class Limpeza(models.Model):
+    usuario         = models.ForeignKey(User)
+    despesa         = models.ForeignKey(Despesas)
+    descricao       = models.CharField(blank=False, max_length=100)
+ 
+    class Meta:
+        verbose_name = 'Limpeza'
+        verbose_name_plural = 'Limpezas'
+
+    def __unicode__(self):
+        return self.usuario.username + " "+ self.despesa.descricao+" "+ str(self.perc)+"%"
+    
+class Itens_Limpeza(models.Model):
+    limpeza         = models.ForeignKey(Limpeza)
+    data_limpeza    = models.DateField(default=datetime.today)    
+    item_checklist  = models.ForeignKey(Checklist)
+    class Meta:
+        verbose_name = 'Item_Limpeza'
+        verbose_name_plural = 'Itens_Limpezas'
+
+    def __unicode__(self):
+        return self.limpeza.descricao
+    
+    
+    
 class Rateios(models.Model):
     usuario  = models.ForeignKey(User)
     despesa = models.ForeignKey(Despesas)
