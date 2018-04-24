@@ -14,10 +14,10 @@ class Job(BaseJob):
             ex.save()
 
         us = User.objects.all()
-        co = Compras.objects.filter(rateio=True,data__month=datetime.today().strftime("%m")).all()
+        co = Compras.objects.filter(rateio=True,data__month=datetime.today().strftime("%m"),data__year=datetime.today().strftime("%Y")).all()
         de = Despesas.objects.all()
         # LIMPA O EXTRATO JA LANCADO.
-        Extrato.objects.filter(data__month=datetime.today().strftime("%m")).delete()
+        Extrato.objects.filter(data__month=datetime.today().strftime("%m"),data__year=datetime.today().strftime("%Y")).delete()
         #
         for usr in us:
             credito = 0
